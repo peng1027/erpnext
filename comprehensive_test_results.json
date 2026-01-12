@@ -1,0 +1,48 @@
+{
+  "test_time": "2025-11-01T09:11:26.087140",
+  "test_type": "comprehensive_tests",
+  "summary": {
+    "total_tests": 7,
+    "passed": 6,
+    "failed": 1,
+    "success_rate": 85.71428571428571
+  },
+  "test_details": [
+    {
+      "name": "數據庫架構完整性",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "數據創建功能",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "數據關聯性",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "工作流程操作",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "數據驗證",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "性能指標",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "數據完整性",
+      "status": "failed",
+      "message": "測試失敗"
+    }
+  ],
+  "errors": []
+}

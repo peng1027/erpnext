@@ -1,0 +1,80 @@
+{
+  "doctype": "DocType",
+  "name": "Contractor Site",
+  "module": "Vendor QC",
+  "autoname": "field:site_name",
+  "editable_grid": 0,
+  "track_changes": 1,
+  "fields": [
+    {
+      "fieldname": "site_name",
+      "label": "Site Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "project",
+      "label": "Project",
+      "fieldtype": "Link",
+      "options": "Project",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "supplier",
+      "label": "Default Supplier",
+      "fieldtype": "Link",
+      "options": "Supplier"
+    },
+    {
+      "fieldname": "address",
+      "label": "Address",
+      "fieldtype": "Small Text"
+    },
+    {
+      "fieldname": "latitude",
+      "label": "Latitude",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "longitude",
+      "label": "Longitude",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "geofence_radius",
+      "label": "Geofence Radius (m)",
+      "fieldtype": "Int",
+      "default": 200
+    },
+    {
+      "fieldname": "polygon_json",
+      "label": "Polygon GeoJSON",
+      "fieldtype": "Long Text"
+    },
+    {
+      "fieldname": "qr_code",
+      "label": "QR Code",
+      "fieldtype": "Attach Image"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "create": 1,
+      "read": 1,
+      "write": 1,
+      "delete": 1
+    },
+    {
+      "role": "Inspector",
+      "create": 1,
+      "read": 1,
+      "write": 1
+    },
+    {
+      "role": "Supplier Supervisor",
+      "read": 1
+    }
+  ]
+}

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>施工現場巡檢App</title>
+    <link rel="stylesheet" href="/assets/frappe/css/frappe-web.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+        }
+        
+        .mobile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-header h1 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .inspection-container {
+            padding: 15px;
+            max-width: 100%;
+        }
+        
+        .site-info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .site-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .site-details {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .checklist-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #667eea;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        
+        .checklist-item {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #fafafa;
+        }
+        
+        .item-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .item-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .status-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .status-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .status-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .status-btn.pass.active {
+            border-color: #28a745;
+            background: #28a745;
+        }
+        
+        .status-btn.fail.active {
+            border-color: #dc3545;
+            background: #dc3545;
+        }
+        
+        .rating-section {
+            margin-top: 12px;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 5px;
+            margin-top: 8px;
+        }
+        
+        .star {
+            font-size: 24px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .star.active {
+            color: #ffc107;
+        }
+        
+        .photo-section {
+            margin-top: 12px;
+        }
+        
+        .photo-input {
+            display: none;
+        }
+        
+        .photo-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            background: white;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .photo-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+        
+        .photo-preview {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .photo-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid #dee2e6;
+        }
+        
+        .remarks-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 60px;
+            margin-top: 8px;
+        }
+        
+        .overall-rating-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .overall-score {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .score-excellent { color: #28a745; }
+        .score-good { color: #17a2b8; }
+        .score-average { color: #ffc107; }
+        .score-poor { color: #dc3545; }
+        
+        .submit-section {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #dee2e6;
+            position: sticky;
+            bottom: 0;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 480px) {
+            .inspection-container {
+                padding: 10px;
+            }
+            
+            .site-info-card,
+            .checklist-section,
+            .overall-rating-section {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .checklist-item {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-header">
+        <h1>🔍 施工現場巡檢</h1>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <div class="inspection-container" id="inspectionContainer">
+        <div class="loading" id="loadingIndicator">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="submit-section" id="submitSection" style="display: none;">
+        <button class="submit-btn" id="submitBtn" onclick="submitInspection()">
+            📋 提交巡檢報告
+        </button>
+    </div>
+
+    <script src="/assets/frappe/js/frappe-web.min.js"></script>
+    <script>
+        let inspectionData = {
+            checklist_items: [],
+            overall_rating: 0,
+            safety_compliance: 0,
+            quality_rating: 0,
+            progress_rating: 0
+        };
+
+        // 初始化頁面
+        document.addEventListener('DOMContentLoaded', function() {
+            loadInspectionData();
+        });
+
+        function loadInspectionData() {
+            // 模擬加載數據
+            setTimeout(() => {
+                const mockData = {
+                    site_info: {
+                        name: "建設工地A區",
+                        supplier: "ABC建築公司",
+                        address: "台北市信義區信義路五段7號",
+                        manager: "張經理",
+                        phone: "02-1234-5678"
+                    },
+                    checklist_items: [
+                        {
+                            id: 1,
+                            title: "安全帽佩戴檢查",
+                            description: "檢查所有工作人員是否正確佩戴安全帽",
+                            is_mandatory: true,
+                            category: "安全檢查"
+                        },
+                        {
+                            id: 2,
+                            title: "施工材料質量檢查",
+                            description: "檢查鋼筋、混凝土等材料是否符合規格",
+                            is_mandatory: true,
+                            category: "質量檢查"
+                        },
+                        {
+                            id: 3,
+                            title: "施工進度檢查",
+                            description: "檢查當前施工進度是否按計劃執行",
+                            is_mandatory: false,
+                            category: "進度檢查"
+                        },
+                        {
+                            id: 4,
+                            title: "環境保護措施",
+                            description: "檢查噪音控制、粉塵處理等環保措施",
+                            is_mandatory: false,
+                            category: "環境檢查"
+                        }
+                    ]
+                };
+                
+                renderInspectionForm(mockData);
+                document.getElementById('loadingIndicator').style.display = 'none';
+                document.getElementById('submitSection').style.display = 'block';
+            }, 1500);
+        }
+
+        function renderInspectionForm(data) {
+            const container = document.getElementById('inspectionContainer');
+            
+            // 渲染現場信息
+            const siteInfoHtml = `
+                <div class="site-info-card">
+                    <div class="site-name">${data.site_info.name}</div>
+                    <div class="site-details">
+                        <div>📍 ${data.site_info.address}</div>
+                        <div>🏢 ${data.site_info.supplier}</div>
+                        <div>👨‍💼 ${data.site_info.manager} | 📞 ${data.site_info.phone}</div>
+                    </div>
+                </div>
+            `;
+
+            // 渲染檢查清單
+            const checklistHtml = `
+                <div class="checklist-section">
+                    <div class="section-title">檢查清單</div>
+                    ${data.checklist_items.map(item => `
+                        <div class="checklist-item" data-item-id="${item.id}">
+                            <div class="item-title">
+                                ${item.title}
+                                ${item.is_mandatory ? '<span style="color: #dc3545;">*</span>' : ''}
+                            </div>
+                            <div class="item-description">${item.description}</div>
+                            
+                            <div class="status-buttons">
+                                <button class="status-btn pass" onclick="setItemStatus(${item.id}, 'pass')">✅ 通過</button>
+                                <button class="status-btn fail" onclick="setItemStatus(${item.id}, 'fail')">❌ 不通過</button>
+                                <button class="status-btn na" onclick="setItemStatus(${item.id}, 'na')">➖ 不適用</button>
+                            </div>
+                            
+                            <div class="rating-section">
+                                <label>評分：</label>
+                                <div class="rating-stars" data-item-id="${item.id}">
+                                    ${[1,2,3,4,5].map(star => `
+                                        <span class="star" onclick="setItemRating(${item.id}, ${star})">⭐</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            
+                            <div class="photo-section">
+                                <label for="photo-${item.id}" class="photo-btn">
+                                    📷 拍攝現場照片
+                                </label>
+                                <input type="file" id="photo-${item.id}" class="photo-input" accept="image/*" capture="environment" onchange="handlePhotoUpload(${item.id}, this)">
+                                <div class="photo-preview" id="preview-${item.id}"></div>
+                            </div>
+                            
+                            <textarea class="remarks-input" placeholder="備註..." onchange="setItemRemarks(${item.id}, this.value)"></textarea>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            // 渲染總體評分
+            const overallRatingHtml = `
+                <div class="overall-rating-section">
+                    <div class="section-title">總體評分</div>
+                    <div class="overall-score" id="overallScore">0.0</div>
+                    <div>分</div>
+                </div>
+            `;
+
+            container.innerHTML = siteInfoHtml + checklistHtml + overallRatingHtml;
+            
+            // 初始化檢查項目數據
+            inspectionData.checklist_items = data.checklist_items.map(item => ({
+                ...item,
+                status: null,
+                rating: 0,
+                remarks: '',
+                photos: []
+            }));
+        }
+
+        function setItemStatus(itemId, status) {
+            const item = inspectionData.checklist_items.find(i => i.id === itemId);
+            if (item) {
+                item.status = status;
+                
+                // 更新按鈕狀態
+                const buttons = document.querySelectorAll(`[data-item-id="${itemId}"] .status-btn`);
+                buttons.forEach(btn => btn.classList.remove('active'));
+                
+                const activeBtn = document.querySelector(`[data-item-id="${itemId}"] .status-btn.${status}`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+                
+                // 自動設置評分
+                if (status === 'pass') {
+                    setItemRating(itemId, 5);
+                } else if (status === 'fail') {
+                    setItemRating(itemId, 1);
+                } else if (status === 'na') {
+                    setItemRating(itemId, 0);
+                }
+                
+                updateProgress();
+                calculateOverallRating();
+            }
+        }
+
+        function setItemRating(itemId, rating) {
+            const item = inspectionData.checklist_items.find(i => i.id === itemId);
+            if (item) {
+                item.rating = rating;
+                
+                // 更新星星顯示
+                const stars = document.querySelectorAll(`[data-item-id="${itemId}"] .star`);
+                stars.forEach((star, index) => {
+                    if (index < rating) {
+                        star.classList.add('active');
+                    } else {
+                        star.classList.remove('active');
+                    }
+                });
+                
+                calculateOverallRating();
+            }
+        }
+
+        function setItemRemarks(itemId, remarks) {
+            const item = inspectionData.checklist_items.find(i => i.id === itemId);
+            if (item) {
+                item.remarks = remarks;
+            }
+        }
+
+        function handlePhotoUpload(itemId, input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const item = inspectionData.checklist_items.find(i => i.id === itemId);
+                    if (item) {
+                        item.photos.push({
+                            name: file.name,
+                            data: e.target.result
+                        });
+                        
+                        // 顯示縮略圖
+                        const preview = document.getElementById(`preview-${itemId}`);
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'photo-thumbnail';
+                        preview.appendChild(img);
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function calculateOverallRating() {
+            const completedItems = inspectionData.checklist_items.filter(item => item.rating > 0);
+            if (completedItems.length === 0) {
+                inspectionData.overall_rating = 0;
+            } else {
+                const totalRating = completedItems.reduce((sum, item) => sum + item.rating, 0);
+                inspectionData.overall_rating = (totalRating / completedItems.length).toFixed(1);
+            }
+            
+            // 更新顯示
+            const scoreElement = document.getElementById('overallScore');
+            scoreElement.textContent = inspectionData.overall_rating;
+            
+            // 設置顏色
+            scoreElement.className = 'overall-score';
+            if (inspectionData.overall_rating >= 4.5) {
+                scoreElement.classList.add('score-excellent');
+            } else if (inspectionData.overall_rating >= 3.5) {
+                scoreElement.classList.add('score-good');
+            } else if (inspectionData.overall_rating >= 2.5) {
+                scoreElement.classList.add('score-average');
+            } else if (inspectionData.overall_rating > 0) {
+                scoreElement.classList.add('score-poor');
+            }
+        }
+
+        function updateProgress() {
+            const totalItems = inspectionData.checklist_items.length;
+            const completedItems = inspectionData.checklist_items.filter(item => item.status !== null).length;
+            const progress = (completedItems / totalItems) * 100;
+            
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function submitInspection() {
+            // 檢查必填項目
+            const mandatoryItems = inspectionData.checklist_items.filter(item => item.is_mandatory);
+            const incompleteMandatory = mandatoryItems.filter(item => item.status === null);
+            
+            if (incompleteMandatory.length > 0) {
+                alert('請完成所有必檢項目！');
+                return;
+            }
+            
+            // 顯示提交確認
+            if (confirm('確定要提交巡檢報告嗎？')) {
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = '提交中...';
+                
+                // 模擬提交
+                setTimeout(() => {
+                    alert('巡檢報告提交成功！');
+                    // 這裡可以跳轉到報告頁面或返回列表
+                    window.location.href = '/app/supplier-inspection';
+                }, 2000);
+            }
+        }
+
+        // 添加觸摸優化
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        document.addEventListener('touchmove', function() {}, {passive: true});
+    </script>
+</body>
+</html>

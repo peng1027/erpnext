@@ -1,0 +1,29 @@
+[
+  {
+    "doctype": "Contractor Site",
+    "site_name": "台北信義工地A",
+    "address": "台北市信義區信義路五段7號",
+    "latitude": 25.033,
+    "longitude": 121.5654,
+    "geofence_radius": 200,
+    "project": "信義區商業大樓建設案"
+  },
+  {
+    "doctype": "Contractor Site",
+    "site_name": "新北板橋工地B",
+    "address": "新北市板橋區中山路一段161號",
+    "latitude": 25.0138,
+    "longitude": 121.4627,
+    "geofence_radius": 150,
+    "project": "板橋住宅社區開發案"
+  },
+  {
+    "doctype": "Contractor Site",
+    "site_name": "桃園中壢工地C",
+    "address": "桃園市中壢區中正路100號",
+    "latitude": 24.9537,
+    "longitude": 121.2257,
+    "geofence_radius": 300,
+    "project": "中壢工業園區擴建案"
+  }
+]

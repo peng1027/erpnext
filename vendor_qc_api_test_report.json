@@ -1,0 +1,59 @@
+{
+  "test_summary": {
+    "total_tests": 7,
+    "passed_tests": 0,
+    "failed_tests": 7,
+    "test_time": "2025-11-01T09:29:43.455597"
+  },
+  "test_details": [
+    {
+      "test_name": "服務器連接測試",
+      "success": false,
+      "timestamp": "2025-11-01T09:29:43.447997",
+      "details": "",
+      "error": "狀態碼: 404"
+    },
+    {
+      "test_name": "Portal 頁面測試",
+      "success": false,
+      "timestamp": "2025-11-01T09:29:43.449310",
+      "details": "",
+      "error": "狀態碼: 404"
+    },
+    {
+      "test_name": "儀表板 API 測試",
+      "success": false,
+      "timestamp": "2025-11-01T09:29:43.450565",
+      "details": "",
+      "error": "狀態碼: 404"
+    },
+    {
+      "test_name": "工地列表 API 測試",
+      "success": false,
+      "timestamp": "2025-11-01T09:29:43.451824",
+      "details": "",
+      "error": "狀態碼: 404"
+    },
+    {
+      "test_name": "NCR 列表 API 測試",
+      "success": false,
+      "timestamp": "2025-11-01T09:29:43.452979",
+      "details": "",
+      "error": "狀態碼: 404"
+    },
+    {
+      "test_name": "圖片上傳 API 測試",
+      "success": false,
+      "timestamp": "2025-11-01T09:29:43.454174",
+      "details": "",
+      "error": "狀態碼: 404"
+    },
+    {
+      "test_name": "創建檢查 API 測試",
+      "success": false,
+      "timestamp": "2025-11-01T09:29:43.455570",
+      "details": "",
+      "error": "狀態碼: 404"
+    }
+  ]
+}

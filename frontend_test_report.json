@@ -1,0 +1,67 @@
+{
+  "test_time": "2025-11-01T09:21:19.272643",
+  "test_type": "frontend_automation_test",
+  "base_url": "http://localhost:8080",
+  "total_tests": 8,
+  "passed_tests": 8,
+  "failed_tests": 0,
+  "error_tests": 0,
+  "test_results": [
+    {
+      "test_name": "服務器連接測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:21:18.888846",
+      "details": "狀態碼: 200",
+      "error": ""
+    },
+    {
+      "test_name": "主頁面載入測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:21:18.892292",
+      "details": "所有必要元素都存在",
+      "error": ""
+    },
+    {
+      "test_name": "儀表板 API 測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:21:18.894625",
+      "details": "工地: 441, 檢查: 53, 完成率: 49.1%",
+      "error": ""
+    },
+    {
+      "test_name": "工地 API 測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:21:18.897900",
+      "details": "成功載入 441 個工地",
+      "error": ""
+    },
+    {
+      "test_name": "檢查記錄 API 測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:21:18.900171",
+      "details": "成功載入 53 個檢查記錄",
+      "error": ""
+    },
+    {
+      "test_name": "系統測試 API 測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:21:19.253482",
+      "details": "測試結果: 通過, 成功率: 100.0%",
+      "error": ""
+    },
+    {
+      "test_name": "響應時間性能測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:21:19.270647",
+      "details": "平均響應時間: 4ms\n   主頁面: 7ms (狀態: 200)\n   儀表板 API: 3ms (狀態: 200)\n   工地 API: 4ms (狀態: 200)\n   檢查記錄 API: 2ms (狀態: 200)",
+      "error": ""
+    },
+    {
+      "test_name": "錯誤處理測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:21:19.272615",
+      "details": "正確處理 404 錯誤",
+      "error": ""
+    }
+  ]
+}

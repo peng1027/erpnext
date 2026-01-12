@@ -1,0 +1,100 @@
+{
+  "migration_time": "2025-11-01T03:05:55.435747",
+  "database_path": "/Users/scp/Documents/GitHub/erpnext/test_construction_inspection.db",
+  "results": {
+    "tables_created": [
+      {
+        "table_name": "tabconstruction_site",
+        "doctype": "Construction Site",
+        "fields_count": 29,
+        "sql": "CREATE TABLE tabconstruction_site (\n  name TEXT PRIMARY KEY,\n  creation DATETIME,\n  modified DATETIME,\n  modified_by TEXT,\n  owner TEXT,\n  docstatus INTEGER DEFAULT 0,\n  idx INTEGER,\n  site_name TEXT NOT NULL,\n  site_code TEXT,\n  column_break_3 TEXT,\n  project TEXT,\n  supplier TEXT NOT NULL,\n  section_break_6 TEXT,\n  site_address TEXT,\n  city TEXT,\n  state TEXT,\n  column_break_10 TEXT,\n  country TEXT,\n  pincode TEXT,\n  gps_coordinates TEXT,\n  section_break_14 TEXT,\n  site_manager TEXT,\n  contact_number TEXT,\n  column_break_17 TEXT,\n  email TEXT,\n  start_date DATE,\n  expected_completion_date DATE,\n  section_break_21 TEXT,\n  site_status TEXT NOT NULL,\n  progress_percentage REAL,\n  column_break_24 TEXT,\n  total_budget REAL,\n  spent_amount REAL,\n  section_break_27 TEXT,\n  description TEXT,\n  remarks TEXT\n)"
+      },
+      {
+        "table_name": "tabsupplier_inspection",
+        "doctype": "Supplier Inspection",
+        "fields_count": 42,
+        "sql": "CREATE TABLE tabsupplier_inspection (\n  name TEXT PRIMARY KEY,\n  creation DATETIME,\n  modified DATETIME,\n  modified_by TEXT,\n  owner TEXT,\n  docstatus INTEGER DEFAULT 0,\n  idx INTEGER,\n  naming_series TEXT NOT NULL,\n  inspection_title TEXT NOT NULL,\n  column_break_3 TEXT,\n  inspection_date DATE NOT NULL,\n  inspection_time TIME,\n  section_break_6 TEXT,\n  construction_site TEXT NOT NULL,\n  supplier TEXT NOT NULL,\n  column_break_9 TEXT,\n  inspector_name TEXT NOT NULL,\n  inspector_employee TEXT,\n  section_break_12 TEXT,\n  inspection_type TEXT NOT NULL,\n  inspection_category TEXT,\n  column_break_15 TEXT,\n  weather_conditions TEXT,\n  temperature TEXT,\n  section_break_18 TEXT,\n  checklist_items TEXT,\n  section_break_20 TEXT,\n  safety_compliance INTEGER,\n  quality_rating INTEGER,\n  column_break_23 TEXT,\n  progress_rating INTEGER,\n  overall_rating INTEGER,\n  section_break_26 TEXT,\n  findings TEXT,\n  recommendations TEXT,\n  column_break_29 TEXT,\n  corrective_actions TEXT,\n  follow_up_required INTEGER,\n  section_break_32 TEXT,\n  inspection_status TEXT NOT NULL,\n  approved_by TEXT,\n  column_break_35 TEXT,\n  approval_date DATE,\n  next_inspection_date DATE,\n  section_break_38 TEXT,\n  photos TEXT,\n  documents TEXT,\n  section_break_41 TEXT,\n  remarks TEXT\n)"
+      },
+      {
+        "table_name": "tabinspection_checklist_item",
+        "doctype": "Inspection Checklist Item",
+        "fields_count": 11,
+        "sql": "CREATE TABLE tabinspection_checklist_item (\n  name TEXT PRIMARY KEY,\n  creation DATETIME,\n  modified DATETIME,\n  modified_by TEXT,\n  owner TEXT,\n  docstatus INTEGER DEFAULT 0,\n  idx INTEGER,\n  check_item TEXT NOT NULL,\n  description TEXT,\n  column_break_3 TEXT,\n  is_mandatory INTEGER,\n  weight REAL,\n  section_break_6 TEXT,\n  status TEXT,\n  rating INTEGER,\n  column_break_9 TEXT,\n  remarks TEXT,\n  photo TEXT\n)"
+      }
+    ],
+    "indexes_created": [
+      {
+        "index_name": "idx_tabconstruction_site_modified",
+        "table": "tabconstruction_site",
+        "field": "modified"
+      },
+      {
+        "index_name": "idx_tabconstruction_site_creation",
+        "table": "tabconstruction_site",
+        "field": "creation"
+      },
+      {
+        "index_name": "idx_tabconstruction_site_owner",
+        "table": "tabconstruction_site",
+        "field": "owner"
+      },
+      {
+        "index_name": "idx_tabconstruction_site_docstatus",
+        "table": "tabconstruction_site",
+        "field": "docstatus"
+      },
+      {
+        "index_name": "idx_tabconstruction_site_site_name",
+        "table": "tabconstruction_site",
+        "field": "site_name"
+      },
+      {
+        "index_name": "idx_tabconstruction_site_site_code",
+        "table": "tabconstruction_site",
+        "field": "site_code"
+      },
+      {
+        "index_name": "idx_tabsupplier_inspection_modified",
+        "table": "tabsupplier_inspection",
+        "field": "modified"
+      },
+      {
+        "index_name": "idx_tabsupplier_inspection_creation",
+        "table": "tabsupplier_inspection",
+        "field": "creation"
+      },
+      {
+        "index_name": "idx_tabsupplier_inspection_owner",
+        "table": "tabsupplier_inspection",
+        "field": "owner"
+      },
+      {
+        "index_name": "idx_tabsupplier_inspection_docstatus",
+        "table": "tabsupplier_inspection",
+        "field": "docstatus"
+      },
+      {
+        "index_name": "idx_tabinspection_checklist_item_modified",
+        "table": "tabinspection_checklist_item",
+        "field": "modified"
+      },
+      {
+        "index_name": "idx_tabinspection_checklist_item_creation",
+        "table": "tabinspection_checklist_item",
+        "field": "creation"
+      },
+      {
+        "index_name": "idx_tabinspection_checklist_item_owner",
+        "table": "tabinspection_checklist_item",
+        "field": "owner"
+      },
+      {
+        "index_name": "idx_tabinspection_checklist_item_docstatus",
+        "table": "tabinspection_checklist_item",
+        "field": "docstatus"
+      }
+    ],
+    "constraints_added": [],
+    "errors": []
+  }
+}

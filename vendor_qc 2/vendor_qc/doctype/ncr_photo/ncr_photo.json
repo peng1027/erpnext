@@ -1,0 +1,19 @@
+{
+  "doctype": "DocType",
+  "name": "NCR Photo",
+  "module": "Vendor QC",
+  "istable": 1,
+  "fields": [
+    {
+      "fieldname": "image",
+      "label": "Image",
+      "fieldtype": "Attach Image",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "caption",
+      "label": "Caption",
+      "fieldtype": "Data"
+    }
+  ]
+}

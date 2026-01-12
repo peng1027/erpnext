@@ -1,0 +1,100 @@
+{
+  "test_time": "2025-11-01T09:23:38.831835",
+  "test_type": "前端功能測試",
+  "total_tests": 8,
+  "passed_tests": 8,
+  "failed_tests": 0,
+  "success_rate": 100.0,
+  "test_details": [
+    {
+      "test_name": "服務器連接性",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:23:30.368659",
+      "details": {
+        "響應時間": "8ms",
+        "狀態碼": 200
+      }
+    },
+    {
+      "test_name": "主頁面載入",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:23:31.378771",
+      "details": {
+        "頁面大小": "15836 字符",
+        "找到元素": "4/5",
+        "元素列表": "標題, 儀表板, 工地管理, 檢查記錄"
+      }
+    },
+    {
+      "test_name": "儀表板 API",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:23:32.392617",
+      "details": {
+        "總工地數": 442,
+        "總檢查數": 54,
+        "完成率": "50.0%",
+        "最近活動": 10
+      }
+    },
+    {
+      "test_name": "工地 API",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:23:33.406019",
+      "details": {
+        "工地總數": 442,
+        "狀態分布": "Active: 178, Completed: 132, Inactive: 132"
+      }
+    },
+    {
+      "test_name": "檢查記錄 API",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:23:34.412456",
+      "details": {
+        "檢查總數": 54,
+        "狀態分布": "Completed: 27, Under Review: 4, In Progress: 6, Draft: 17"
+      }
+    },
+    {
+      "test_name": "系統測試 API",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:23:35.769711",
+      "details": {
+        "執行時間": "0.4秒",
+        "總體結果": "通過",
+        "成功率": "100.0%",
+        "通過測試": "5/5"
+      }
+    },
+    {
+      "test_name": "性能測試",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:23:36.817375",
+      "details": {
+        "主頁面": "6ms",
+        "儀表板": "3ms",
+        "工地列表": "3ms",
+        "檢查記錄": "2ms",
+        "總體評級": "優秀"
+      }
+    },
+    {
+      "test_name": "錯誤處理",
+      "status": "PASS",
+      "timestamp": "2025-11-01T09:23:37.830817",
+      "details": {
+        "不存在的端點": "正確處理 (404)",
+        "無效參數": "未預期響應 (200)"
+      }
+    }
+  ],
+  "summary": {
+    "overall_result": "PASS",
+    "performance_status": "良好",
+    "recommendations": [
+      "所有核心功能正常運行",
+      "API 響應時間在可接受範圍內",
+      "錯誤處理機制正常",
+      "建議定期執行回歸測試"
+    ]
+  }
+}

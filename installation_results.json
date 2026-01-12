@@ -1,0 +1,49 @@
+{
+  "installation": true,
+  "doctypes": [
+    {
+      "name": "construction_site",
+      "status": "valid",
+      "fields": 29
+    },
+    {
+      "name": "supplier_inspection",
+      "status": "valid",
+      "fields": 42
+    },
+    {
+      "name": "inspection_checklist_item",
+      "status": "valid",
+      "fields": 11
+    }
+  ],
+  "integrations": [
+    {
+      "name": "project_integration",
+      "status": "available"
+    },
+    {
+      "name": "supplier_integration",
+      "status": "available"
+    },
+    {
+      "name": "user_permission_integration",
+      "status": "available"
+    }
+  ],
+  "tasks": [
+    {
+      "name": "daily",
+      "status": "available"
+    },
+    {
+      "name": "weekly",
+      "status": "available"
+    },
+    {
+      "name": "monthly",
+      "status": "available"
+    }
+  ],
+  "errors": []
+}

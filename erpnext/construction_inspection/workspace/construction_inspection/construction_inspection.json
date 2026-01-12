@@ -1,0 +1,134 @@
+{
+ "charts": [
+  {
+   "chart_name": "Inspection Rating Trend",
+   "label": "巡檢評分趨勢"
+  },
+  {
+   "chart_name": "Supplier Performance",
+   "label": "供應商績效"
+  }
+ ],
+ "content": "[{\"id\":\"_8cOhOJlBa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>🏗️ 施工現場巡檢管理</b></span>\",\"col\":12}},{\"id\":\"_F8cOhOJlBa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Construction Site\",\"col\":3}},{\"id\":\"_G8cOhOJlBa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Inspection\",\"col\":3}},{\"id\":\"_H8cOhOJlBa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mobile Inspection\",\"col\":3}},{\"id\":\"_I8cOhOJlBa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection Dashboard\",\"col\":3}},{\"id\":\"_J8cOhOJlBa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h5\\\"><b>📊 數據分析</b></span>\",\"col\":12}},{\"id\":\"_K8cOhOJlBa\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Inspection Rating Trend\",\"col\":6}},{\"id\":\"_L8cOhOJlBa\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Supplier Performance\",\"col\":6}},{\"id\":\"_M8cOhOJlBa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h5\\\"><b>📋 報表與分析</b></span>\",\"col\":12}},{\"id\":\"_N8cOhOJlBa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inspection Summary\",\"col\":4}},{\"id\":\"_O8cOhOJlBa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Site Progress Report\",\"col\":4}},{\"id\":\"_P8cOhOJlBa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Quality Analysis\",\"col\":4}}]",
+ "creation": "2024-01-15 10:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "construction",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Construction Inspection",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "施工現場管理",
+   "link_name": "Construction Site",
+   "link_to": "Construction Site",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "供應商巡檢",
+   "link_name": "Supplier Inspection",
+   "link_to": "Supplier Inspection",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "檢查清單項目",
+   "link_name": "Inspection Checklist Item",
+   "link_to": "Inspection Checklist Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "巡檢摘要報表",
+   "link_name": "Inspection Summary",
+   "link_to": "Inspection Summary",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "移動端巡檢",
+   "link_name": "Mobile Inspection",
+   "link_to": "/construction_inspection/www/mobile-inspection.html",
+   "link_type": "Page",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "巡檢儀表板",
+   "link_name": "Inspection Dashboard",
+   "link_to": "/construction_inspection/www/inspection-dashboard.html",
+   "link_type": "Page",
+   "onboard": 1,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-01-15 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction Inspection",
+ "name": "Construction Inspection",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 15.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "施工現場",
+   "link_to": "Construction Site",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "供應商巡檢",
+   "link_to": "Supplier Inspection",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "移動端巡檢",
+   "link_to": "/construction_inspection/www/mobile-inspection.html",
+   "type": "Page"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "List",
+   "label": "巡檢儀表板",
+   "link_to": "/construction_inspection/www/inspection-dashboard.html",
+   "type": "Page"
+  },
+  {
+   "color": "Red",
+   "doc_view": "Report",
+   "label": "巡檢摘要",
+   "link_to": "Inspection Summary",
+   "type": "Report"
+  }
+ ],
+ "title": "施工現場巡檢"
+}

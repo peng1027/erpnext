@@ -1,0 +1,47 @@
+{
+  "test_time": "2025-11-01T03:13:24.074759",
+  "summary": {
+    "total_tests": 7,
+    "passed": 7,
+    "failed": 0,
+    "success_rate": 100.0
+  },
+  "test_details": [
+    {
+      "name": "建築工地創建",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "供應商檢查創建",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "檢查清單項目創建",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "工作流程轉換",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "數據關聯性",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "數據驗證",
+      "status": "passed",
+      "message": "測試通過"
+    },
+    {
+      "name": "數據查詢功能",
+      "status": "passed",
+      "message": "測試通過"
+    }
+  ],
+  "errors": []
+}

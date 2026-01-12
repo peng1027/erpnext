@@ -1,0 +1,38 @@
+{
+  "test_time": "2025-11-01T09:23:35.760937",
+  "test_type": "system_runtime_test",
+  "database_path": "test_construction_inspection.db",
+  "statistics": {
+    "total_sites": 443,
+    "total_inspections": 55,
+    "inspection_status": {
+      "Completed": 28,
+      "Draft": 17,
+      "In Progress": 6,
+      "Under Review": 4
+    },
+    "total_checklist_items": 12
+  },
+  "test_results": [
+    {
+      "name": "數據庫架構測試",
+      "status": "passed"
+    },
+    {
+      "name": "數據操作測試",
+      "status": "passed"
+    },
+    {
+      "name": "工作流程模擬",
+      "status": "passed"
+    },
+    {
+      "name": "性能指標測試",
+      "status": "passed"
+    },
+    {
+      "name": "數據完整性測試",
+      "status": "passed"
+    }
+  ]
+}

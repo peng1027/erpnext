@@ -1,0 +1,27 @@
+Key,Value,Language
+Vendor QC,Vendor QC,zh-TW
+NCR,不符合,zh-TW
+Supplier,供應商,zh-TW
+Project,專案,zh-TW
+Contractor Site,工地場域,zh-TW
+Vendor Site Visit,到場紀錄,zh-TW
+Title,標題,zh-TW
+Severity,嚴重度,zh-TW
+Due Date,截止日,zh-TW
+Status,狀態,zh-TW
+Open,開放,zh-TW
+Under Review,審查中,zh-TW
+Closed,已結案,zh-TW
+Cancelled,作廢,zh-TW
+Description,描述,zh-TW
+Photos,照片,zh-TW
+Signature,簽名,zh-TW
+Latitude,緯度,zh-TW
+Longitude,經度,zh-TW
+Check In,到場時間,zh-TW
+Check Out,離場時間,zh-TW
+Geofence Radius (m),地理圍欄半徑(米),zh-TW
+Polygon GeoJSON,多邊形 GeoJSON,zh-TW
+Default Supplier,預設供應商,zh-TW
+Site Name,場域名稱,zh-TW
+Site,場域,zh-TW

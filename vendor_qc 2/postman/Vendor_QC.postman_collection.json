@@ -1,0 +1,164 @@
+{
+  "info": {
+    "name": "Vendor_QC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Dashboard",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/method/vendor_qc.api.dashboard",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "method",
+            "vendor_qc.api.dashboard"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Sites",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/method/vendor_qc.api.list_sites",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "method",
+            "vendor_qc.api.list_sites"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List NCRs",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/method/vendor_qc.api.list_ncrs",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "method",
+            "vendor_qc.api.list_ncrs"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Inspection",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/method/vendor_qc.api.create_inspection",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "method",
+            "vendor_qc.api.create_inspection"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"site\": \"A03-2F Smart Lab\", \"supplier\": \"SRR\", \"remarks\": \"Test\"}"
+        }
+      }
+    },
+    {
+      "name": "Create NCR",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/method/vendor_qc.api.create_ncr",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "method",
+            "vendor_qc.api.create_ncr"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Trunk not sealed\", \"site\": \"A03-2F Smart Lab\", \"supplier\": \"SRR\", \"severity\": \"High\", \"description\": \"Missing cover plate\"}"
+        }
+      }
+    },
+    {
+      "name": "Supplier Reply",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base}}/api/method/vendor_qc.api.supplier_reply",
+          "host": [
+            "{{base}}"
+          ],
+          "path": [
+            "api",
+            "method",
+            "vendor_qc.api.supplier_reply"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"ncr\": \"NCR-000001\", \"message\": \"Will fix by 10/30\"}"
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base",
+      "value": "http://your.site"
+    }
+  ]
+}

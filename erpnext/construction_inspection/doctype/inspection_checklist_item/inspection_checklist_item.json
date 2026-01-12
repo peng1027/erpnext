@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "check_item",
+  "description",
+  "column_break_3",
+  "is_mandatory",
+  "weight",
+  "section_break_6",
+  "status",
+  "rating",
+  "column_break_9",
+  "remarks",
+  "photo"
+ ],
+ "fields": [
+  {
+   "fieldname": "check_item",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "檢查項目",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "項目描述"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_mandatory",
+   "fieldtype": "Check",
+   "label": "必檢項目"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "權重",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break",
+   "label": "檢查結果"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "檢查狀態",
+   "options": "待檢查\n通過\n不通過\n不適用"
+  },
+  {
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "評分",
+   "max_rating": 5
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "備註"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "現場照片"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction Inspection",
+ "name": "Inspection Checklist Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

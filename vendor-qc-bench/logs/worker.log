@@ -1,0 +1,8 @@
+2025-11-01 10:40:31,878 Worker rq:worker:9a8d24eb8e0e481995fb1d89691a2b37 started with PID 33222, version 1.15.1
+2025-11-01 10:40:31,878 Subscribing to channel rq:pubsub:9a8d24eb8e0e481995fb1d89691a2b37
+2025-11-01 10:40:31,878 *** Listening on Users-scp-Documents-GitHub-erpnext-vendor-qc-bench:short, Users-scp-Documents-GitHub-erpnext-vendor-qc-bench:default, Users-scp-Documents-GitHub-erpnext-vendor-qc-bench:long...
+2025-11-01 10:40:31,878 Cleaning registries for queue: Users-scp-Documents-GitHub-erpnext-vendor-qc-bench:short
+2025-11-01 10:40:31,879 Cleaning registries for queue: Users-scp-Documents-GitHub-erpnext-vendor-qc-bench:default
+2025-11-01 10:40:31,880 Cleaning registries for queue: Users-scp-Documents-GitHub-erpnext-vendor-qc-bench:long
+2025-11-01 10:40:46,498 Worker 9a8d24eb8e0e481995fb1d89691a2b37 [PID 33222]: warm shut down requested
+2025-11-01 10:40:46,499 Unsubscribing from channel rq:pubsub:9a8d24eb8e0e481995fb1d89691a2b37

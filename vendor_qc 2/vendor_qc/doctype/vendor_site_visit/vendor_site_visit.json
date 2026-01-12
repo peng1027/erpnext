@@ -1,0 +1,77 @@
+{
+  "doctype": "DocType",
+  "name": "Vendor Site Visit",
+  "module": "Vendor QC",
+  "autoname": "format:VIS-{########}",
+  "editable_grid": 0,
+  "track_changes": 1,
+  "fields": [
+    {
+      "fieldname": "site",
+      "label": "Site",
+      "fieldtype": "Link",
+      "options": "Contractor Site",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "supplier",
+      "label": "Supplier",
+      "fieldtype": "Link",
+      "options": "Supplier",
+      "reqd": 1
+    },
+    {
+      "fieldname": "check_in",
+      "label": "Check In",
+      "fieldtype": "Datetime",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "check_out",
+      "label": "Check Out",
+      "fieldtype": "Datetime"
+    },
+    {
+      "fieldname": "latitude",
+      "label": "Latitude",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "longitude",
+      "label": "Longitude",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "signature",
+      "label": "Signature",
+      "fieldtype": "Signature"
+    },
+    {
+      "fieldname": "photos",
+      "label": "Photos",
+      "fieldtype": "Table",
+      "options": "NCR Photo"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "create": 1,
+      "read": 1,
+      "write": 1,
+      "delete": 1
+    },
+    {
+      "role": "Inspector",
+      "create": 1,
+      "read": 1,
+      "write": 1
+    },
+    {
+      "role": "Supplier Supervisor",
+      "read": 1,
+      "write": 1
+    }
+  ]
+}

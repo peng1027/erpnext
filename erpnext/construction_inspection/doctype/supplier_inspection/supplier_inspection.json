@@ -1,0 +1,326 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "inspection_title",
+  "column_break_3",
+  "inspection_date",
+  "inspection_time",
+  "section_break_6",
+  "construction_site",
+  "supplier",
+  "column_break_9",
+  "inspector_name",
+  "inspector_employee",
+  "section_break_12",
+  "inspection_type",
+  "inspection_category",
+  "column_break_15",
+  "weather_conditions",
+  "temperature",
+  "section_break_18",
+  "checklist_items",
+  "section_break_20",
+  "safety_compliance",
+  "quality_rating",
+  "column_break_23",
+  "progress_rating",
+  "overall_rating",
+  "section_break_26",
+  "findings",
+  "recommendations",
+  "column_break_29",
+  "corrective_actions",
+  "follow_up_required",
+  "section_break_32",
+  "inspection_status",
+  "approved_by",
+  "column_break_35",
+  "approval_date",
+  "next_inspection_date",
+  "section_break_38",
+  "photos",
+  "documents",
+  "section_break_41",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "命名系列",
+   "options": "INSP-.YYYY.-.MM.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspection_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "巡檢標題",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "巡檢日期",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspection_time",
+   "fieldtype": "Time",
+   "label": "巡檢時間"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break",
+   "label": "基本信息"
+  },
+  {
+   "fieldname": "construction_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "施工現場",
+   "options": "Construction Site",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "供應商",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspector_name",
+   "fieldtype": "Data",
+   "label": "巡檢員姓名",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspector_employee",
+   "fieldtype": "Link",
+   "label": "巡檢員工",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break",
+   "label": "巡檢詳情"
+  },
+  {
+   "fieldname": "inspection_type",
+   "fieldtype": "Select",
+   "label": "巡檢類型",
+   "options": "定期巡檢\n專項檢查\n突擊檢查\n驗收檢查\n安全檢查",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspection_category",
+   "fieldtype": "Select",
+   "label": "檢查類別",
+   "options": "安全檢查\n質量檢查\n進度檢查\n環境檢查\n綜合檢查"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "weather_conditions",
+   "fieldtype": "Select",
+   "label": "天氣狀況",
+   "options": "晴天\n陰天\n雨天\n雪天\n大風"
+  },
+  {
+   "fieldname": "temperature",
+   "fieldtype": "Data",
+   "label": "溫度 (°C)"
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break",
+   "label": "檢查清單"
+  },
+  {
+   "fieldname": "checklist_items",
+   "fieldtype": "Table",
+   "label": "檢查項目",
+   "options": "Inspection Checklist Item"
+  },
+  {
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break",
+   "label": "評分"
+  },
+  {
+   "fieldname": "safety_compliance",
+   "fieldtype": "Rating",
+   "label": "安全合規性",
+   "max_rating": 5
+  },
+  {
+   "fieldname": "quality_rating",
+   "fieldtype": "Rating",
+   "label": "質量評分",
+   "max_rating": 5
+  },
+  {
+   "fieldname": "column_break_23",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "progress_rating",
+   "fieldtype": "Rating",
+   "label": "進度評分",
+   "max_rating": 5
+  },
+  {
+   "fieldname": "overall_rating",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "總體評分",
+   "max_rating": 5
+  },
+  {
+   "fieldname": "section_break_26",
+   "fieldtype": "Section Break",
+   "label": "檢查結果"
+  },
+  {
+   "fieldname": "findings",
+   "fieldtype": "Text Editor",
+   "label": "檢查發現"
+  },
+  {
+   "fieldname": "recommendations",
+   "fieldtype": "Text Editor",
+   "label": "改進建議"
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "corrective_actions",
+   "fieldtype": "Text Editor",
+   "label": "糾正措施"
+  },
+  {
+   "fieldname": "follow_up_required",
+   "fieldtype": "Check",
+   "label": "需要跟進"
+  },
+  {
+   "fieldname": "section_break_32",
+   "fieldtype": "Section Break",
+   "label": "審批狀態"
+  },
+  {
+   "fieldname": "inspection_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "巡檢狀態",
+   "options": "草稿\n進行中\n已完成\n通過\n不通過\n需要整改",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "審批人",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_35",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approval_date",
+   "fieldtype": "Date",
+   "label": "審批日期"
+  },
+  {
+   "fieldname": "next_inspection_date",
+   "fieldtype": "Date",
+   "label": "下次巡檢日期"
+  },
+  {
+   "fieldname": "section_break_38",
+   "fieldtype": "Section Break",
+   "label": "附件"
+  },
+  {
+   "fieldname": "photos",
+   "fieldtype": "Table",
+   "label": "現場照片",
+   "options": "Inspection Photo"
+  },
+  {
+   "fieldname": "documents",
+   "fieldtype": "Table",
+   "label": "相關文檔",
+   "options": "Inspection Document"
+  },
+  {
+   "fieldname": "section_break_41",
+   "fieldtype": "Section Break",
+   "label": "備註"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "備註"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction Inspection",
+ "name": "Supplier Inspection",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Inspector",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

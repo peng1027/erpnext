@@ -1,0 +1,22 @@
+[
+  {
+    "doctype": "Vendor Site Visit",
+    "site": "台北信義工地A",
+    "supplier": "台灣混凝土股份有限公司",
+    "visit_date": "2025-11-01",
+    "visit_time": "09:30:00",
+    "purpose": "混凝土澆置品質檢查",
+    "inspector": "張工程師",
+    "status": "Completed"
+  },
+  {
+    "doctype": "Vendor Site Visit",
+    "site": "新北板橋工地B",
+    "supplier": "豐國鋼鐵股份有限公司",
+    "visit_date": "2025-11-01",
+    "visit_time": "14:00:00",
+    "purpose": "鋼筋綁紮檢驗",
+    "inspector": "李工程師",
+    "status": "In Progress"
+  }
+]

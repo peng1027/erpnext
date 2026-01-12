@@ -1,0 +1,130 @@
+2025-11-01 10:06:02,465 DEBUG cd vendor-qc-bench && python3 -m venv env
+2025-11-01 10:06:03,762 DEBUG cd vendor-qc-bench && /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench/env/bin/python -m pip install --quiet --upgrade pip
+2025-11-01 10:06:04,647 DEBUG cd vendor-qc-bench && /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench/env/bin/python -m pip install --quiet wheel
+2025-11-01 10:06:05,689 LOG Getting frappe
+2025-11-01 10:06:05,689 DEBUG cd vendor-qc-bench/apps && git clone https://github.com/frappe/frappe.git --branch version-15 --depth 1 --origin upstream
+2025-11-01 10:06:11,797 LOG Installing frappe
+2025-11-01 10:06:11,797 DEBUG cd /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench && /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench/env/bin/python -m pip install --quiet --upgrade -e /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench/apps/frappe 
+2025-11-01 10:06:30,300 DEBUG cd /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench/apps/frappe && yarn install --check-files
+2025-11-01 10:07:01,267 DEBUG cd vendor-qc-bench && bench build
+2025-11-01 10:07:01,403 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench build
+2025-11-01 10:07:08,298 LOG setting up backups
+2025-11-01 10:07:08,311 LOG backups were set up
+2025-11-01 10:07:08,311 INFO Bench vendor-qc-bench initialized
+2025-11-01 10:07:15,213 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench get-app erpnext --branch version-15
+2025-11-01 10:07:15,816 LOG Getting erpnext
+2025-11-01 10:07:15,816 DEBUG cd ./apps && git clone https://github.com/frappe/erpnext.git --branch version-15 --depth 1 --origin upstream
+2025-11-01 10:07:21,891 LOG Installing erpnext
+2025-11-01 10:07:21,891 DEBUG cd /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench && /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench/env/bin/python -m pip install --quiet --upgrade -e /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench/apps/erpnext 
+2025-11-01 10:07:35,182 DEBUG cd /Users/scp/Documents/GitHub/erpnext/vendor-qc-bench/apps/erpnext && yarn install --check-files
+2025-11-01 10:07:35,512 DEBUG bench build --app erpnext
+2025-11-01 10:07:35,592 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench build --app erpnext
+2025-11-01 10:07:43,360 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123
+2025-11-01 10:09:08,610 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123
+2025-11-01 10:09:14,764 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site vendor-qc.local install-app erpnext
+2025-11-01 10:09:33,139 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench drop-site vendor-qc.local --force
+2025-11-01 10:10:29,815 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --mariadb-root-password 
+2025-11-01 10:10:42,057 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --mariadb-root-password 
+2025-11-01 10:11:39,318 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --mariadb-root-password 
+2025-11-01 10:12:17,418 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site vendor-qc.local install-app erpnext
+2025-11-01 10:12:29,469 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site vendor-qc.local install-app erpnext
+2025-11-01 10:12:36,439 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site vendor-qc.local reinstall --admin-password admin123
+2025-11-01 10:13:15,331 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --mariadb-root-password 
+2025-11-01 10:19:33,179 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --mariadb-root-password 
+2025-11-01 10:22:43,562 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --mariadb-root-password 
+2025-11-01 10:31:56,345 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --db-type mariadb --db-host 127.0.0.1 --db-port 3306 --mariadb-root-password 
+2025-11-01 10:32:06,991 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench drop-site vendor-qc.local --force
+2025-11-01 10:33:26,354 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --mariadb-root-password  --force
+2025-11-01 10:34:04,385 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site vendor-qc.local --admin-password admin123 --mariadb-root-password 
+2025-11-01 10:35:04,223 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site vendor-qc.local list-apps
+2025-11-01 10:35:19,681 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench new-site test-site.local --admin-password admin123 --mariadb-root-password 
+2025-11-01 10:35:51,721 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site test-site.local install-app erpnext
+2025-11-01 10:37:06,175 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench get-app ../vendor_qc
+2025-11-01 10:37:06,179 WARNING /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench get-app ../vendor_qc executed with exit code 1
+2025-11-01 10:37:22,761 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench get-app ../vendor_qc
+2025-11-01 10:37:22,771 LOG Getting vendor_qc
+2025-11-01 10:37:22,772 DEBUG cd ./apps && git clone ../vendor_qc  --depth 1 --origin upstream
+2025-11-01 10:37:22,776 WARNING cd ./apps && git clone ../vendor_qc  --depth 1 --origin upstream executed with exit code 128
+2025-11-01 10:37:22,776 WARNING /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench get-app ../vendor_qc executed with exit code 1
+2025-11-01 10:37:38,616 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site test-site.local install-app vendor_qc
+2025-11-01 10:38:52,036 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site test-site.local install-app vendor_qc
+2025-11-01 10:39:07,463 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench restart
+2025-11-01 10:39:12,781 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site test-site.local install-app vendor_qc
+2025-11-01 10:39:34,988 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site test-site.local install-app vendor_qc
+2025-11-01 10:39:57,368 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site test-site.local install-app vendor_qc
+2025-11-01 10:40:09,423 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site test-site.local migrate
+2025-11-01 10:40:31,255 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench start
+2025-11-01 10:40:31,466 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench serve --port 8000
+2025-11-01 10:40:31,467 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench watch
+2025-11-01 10:40:31,467 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench schedule
+2025-11-01 10:40:31,469 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench worker
+2025-11-01 10:40:52,092 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --site test-site.local console
+2025-11-01 12:00:03,959 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-01 18:00:00,847 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-02 00:00:01,392 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-02 06:00:00,684 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-02 12:00:01,189 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-02 18:00:00,873 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-03 00:00:00,691 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-03 06:00:01,374 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-03 12:00:00,812 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-03 18:00:01,287 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-04 18:00:01,125 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-05 00:00:01,732 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-05 06:00:01,113 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-06 00:00:00,647 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-06 06:00:01,439 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-06 12:00:00,847 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-06 18:00:01,417 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-07 00:00:01,292 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-07 06:00:01,407 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-07 12:00:01,251 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-11 00:00:01,625 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-11 06:00:03,782 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-11 12:00:38,275 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-12 18:00:03,511 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-13 00:00:01,480 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-13 06:00:01,226 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-13 12:00:00,925 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-13 18:00:00,935 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-14 00:00:01,257 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-14 06:00:01,095 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-14 12:00:01,018 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-14 18:00:01,269 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-15 00:00:01,294 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-15 06:00:00,980 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-16 18:00:02,825 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-17 00:00:01,082 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-17 06:00:01,103 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-17 12:00:01,442 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-17 18:00:01,079 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-18 00:00:01,256 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-18 06:00:00,822 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-19 00:00:01,114 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-19 06:00:00,985 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-20 12:00:01,320 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-21 00:00:01,236 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-21 06:00:00,745 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-21 12:00:01,058 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-22 00:00:02,663 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-22 12:00:01,103 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-22 18:00:01,304 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-23 06:04:55,231 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-23 12:00:00,732 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-23 18:00:01,118 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-24 12:01:13,289 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-25 06:00:00,898 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-25 12:00:01,384 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-25 18:00:01,328 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-26 00:00:01,402 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-26 06:00:00,892 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-26 12:00:00,623 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-26 18:00:01,155 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-27 00:00:01,088 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-27 06:00:00,962 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-27 12:00:01,291 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-27 18:00:01,278 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-28 00:00:01,118 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-28 06:00:00,724 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-28 12:00:01,055 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup
+2025-11-28 18:00:00,962 INFO /Users/scp/Documents/GitHub/erpnext/frappe_env/bin/bench --verbose --site all backup

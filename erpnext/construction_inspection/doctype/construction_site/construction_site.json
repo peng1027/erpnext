@@ -1,0 +1,234 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:site_name",
+ "creation": "2024-01-01 00:00:00.000000",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "site_name",
+  "site_code",
+  "column_break_3",
+  "project",
+  "supplier",
+  "section_break_6",
+  "site_address",
+  "city",
+  "state",
+  "column_break_10",
+  "country",
+  "pincode",
+  "gps_coordinates",
+  "section_break_14",
+  "site_manager",
+  "contact_number",
+  "column_break_17",
+  "email",
+  "start_date",
+  "expected_completion_date",
+  "section_break_21",
+  "site_status",
+  "progress_percentage",
+  "column_break_24",
+  "total_budget",
+  "spent_amount",
+  "section_break_27",
+  "description",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "site_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "施工現場名稱",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "site_code",
+   "fieldtype": "Data",
+   "label": "現場代碼",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "關聯項目",
+   "options": "Project"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "供應商",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break",
+   "label": "地址信息"
+  },
+  {
+   "fieldname": "site_address",
+   "fieldtype": "Small Text",
+   "label": "現場地址"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "城市"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "省份"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "國家",
+   "options": "Country"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "郵編"
+  },
+  {
+   "fieldname": "gps_coordinates",
+   "fieldtype": "Data",
+   "label": "GPS坐標"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break",
+   "label": "聯繫信息"
+  },
+  {
+   "fieldname": "site_manager",
+   "fieldtype": "Data",
+   "label": "現場經理"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "聯繫電話"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "電子郵件"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "開工日期"
+  },
+  {
+   "fieldname": "expected_completion_date",
+   "fieldtype": "Date",
+   "label": "預計完工日期"
+  },
+  {
+   "fieldname": "section_break_21",
+   "fieldtype": "Section Break",
+   "label": "項目狀態"
+  },
+  {
+   "fieldname": "site_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "現場狀態",
+   "options": "計劃中\n進行中\n暫停\n已完成\n已取消",
+   "reqd": 1
+  },
+  {
+   "fieldname": "progress_percentage",
+   "fieldtype": "Percent",
+   "label": "完成進度"
+  },
+  {
+   "fieldname": "column_break_24",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_budget",
+   "fieldtype": "Currency",
+   "label": "總預算"
+  },
+  {
+   "fieldname": "spent_amount",
+   "fieldtype": "Currency",
+   "label": "已花費金額"
+  },
+  {
+   "fieldname": "section_break_27",
+   "fieldtype": "Section Break",
+   "label": "備註"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "項目描述"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "備註"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Construction Inspection",
+ "name": "Construction Site",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Construction Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

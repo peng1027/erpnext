@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>施工現場巡檢儀表板</title>
+    <link rel="stylesheet" href="/assets/frappe/css/frappe-web.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .dashboard-header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .dashboard-subtitle {
+            margin-top: 8px;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .dashboard-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .stat-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .stat-trend {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .trend-up { color: #28a745; }
+        .trend-down { color: #dc3545; }
+        .trend-stable { color: #6c757d; }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .recent-inspections {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .inspection-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .inspection-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            background: #fafafa;
+            transition: background 0.2s ease;
+        }
+        
+        .inspection-item:hover {
+            background: #f0f0f0;
+        }
+        
+        .inspection-info {
+            flex: 1;
+        }
+        
+        .inspection-site {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .inspection-details {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .inspection-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+        
+        .status-excellent {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-good {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .status-average {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-poor {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .action-btn.secondary {
+            background: #6c757d;
+        }
+        
+        .filters {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .filter-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+            min-width: 150px;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            .charts-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .chart-card {
+                padding: 15px;
+            }
+            
+            .chart-container {
+                height: 250px;
+            }
+            
+            .quick-actions {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                justify-content: center;
+            }
+            
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-select {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1>📊 施工現場巡檢儀表板</h1>
+        <div class="dashboard-subtitle">實時監控供應商施工現場巡檢狀況</div>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- 快速操作 -->
+        <div class="quick-actions">
+            <a href="/app/construction-site" class="action-btn">
+                🏗️ 管理施工現場
+            </a>
+            <a href="/app/supplier-inspection" class="action-btn">
+                📋 查看巡檢記錄
+            </a>
+            <a href="/construction_inspection/www/mobile-inspection.html" class="action-btn">
+                📱 開始巡檢
+            </a>
+            <button class="action-btn secondary" onclick="exportReport()">
+                📄 導出報告
+            </button>
+        </div>
+
+        <!-- 篩選器 -->
+        <div class="filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label class="filter-label">時間範圍</label>
+                    <select class="filter-select" id="timeRange" onchange="updateDashboard()">
+                        <option value="7">最近7天</option>
+                        <option value="30" selected>最近30天</option>
+                        <option value="90">最近90天</option>
+                        <option value="365">最近一年</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">供應商</label>
+                    <select class="filter-select" id="supplierFilter" onchange="updateDashboard()">
+                        <option value="">全部供應商</option>
+                        <option value="ABC建築公司">ABC建築公司</option>
+                        <option value="XYZ工程公司">XYZ工程公司</option>
+                        <option value="DEF建設公司">DEF建設公司</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">現場狀態</label>
+                    <select class="filter-select" id="statusFilter" onchange="updateDashboard()">
+                        <option value="">全部狀態</option>
+                        <option value="active">進行中</option>
+                        <option value="completed">已完成</option>
+                        <option value="suspended">暫停</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 統計卡片 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🏗️</div>
+                <div class="stat-number" id="totalSites">24</div>
+                <div class="stat-label">總施工現場</div>
+                <div class="stat-trend trend-up">↗ +3 本月新增</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-number" id="totalInspections">156</div>
+                <div class="stat-label">本月巡檢次數</div>
+                <div class="stat-trend trend-up">↗ +12% 較上月</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-number" id="avgRating">4.2</div>
+                <div class="stat-label">平均評分</div>
+                <div class="stat-trend trend-stable">→ 與上月持平</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-number" id="issuesCount">8</div>
+                <div class="stat-label">待處理問題</div>
+                <div class="stat-trend trend-down">↘ -5 較上週</div>
+            </div>
+        </div>
+
+        <!-- 圖表區域 -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-title">巡檢評分趨勢</div>
+                <div class="chart-container">
+                    <canvas id="ratingTrendChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">供應商評分分布</div>
+                <div class="chart-container">
+                    <canvas id="supplierRatingChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">問題類型分析</div>
+                <div class="chart-container">
+                    <canvas id="issueTypeChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">巡檢完成率</div>
+                <div class="chart-container">
+                    <canvas id="completionRateChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最近巡檢記錄 -->
+        <div class="recent-inspections">
+            <div class="section-title">
+                最近巡檢記錄
+                <a href="/app/supplier-inspection" class="action-btn" style="font-size: 12px; padding: 6px 12px;">查看全部</a>
+            </div>
+            <div class="inspection-list" id="recentInspectionsList">
+                <!-- 動態加載內容 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/frappe/js/frappe-web.min.js"></script>
+    <script>
+        let charts = {};
+
+        // 初始化儀表板
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+            loadRecentInspections();
+            updateDashboard();
+        });
+
+        function initializeCharts() {
+            // 巡檢評分趨勢圖
+            const ratingCtx = document.getElementById('ratingTrendChart').getContext('2d');
+            charts.ratingTrend = new Chart(ratingCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+                    datasets: [{
+                        label: '平均評分',
+                        data: [3.8, 4.1, 4.0, 4.3, 4.2, 4.2],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5
+                        }
+                    }
+                }
+            });
+
+            // 供應商評分分布圖
+            const supplierCtx = document.getElementById('supplierRatingChart').getContext('2d');
+            charts.supplierRating = new Chart(supplierCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['ABC建築', 'XYZ工程', 'DEF建設', 'GHI營造', 'JKL建設'],
+                    datasets: [{
+                        label: '平均評分',
+                        data: [4.5, 4.2, 3.8, 4.1, 3.9],
+                        backgroundColor: [
+                            '#28a745',
+                            '#17a2b8',
+                            '#ffc107',
+                            '#17a2b8',
+                            '#ffc107'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5
+                        }
+                    }
+                }
+            });
+
+            // 問題類型分析圖
+            const issueCtx = document.getElementById('issueTypeChart').getContext('2d');
+            charts.issueType = new Chart(issueCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['安全問題', '質量問題', '進度延遲', '環境問題', '其他'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            '#dc3545',
+                            '#ffc107',
+                            '#17a2b8',
+                            '#28a745',
+                            '#6c757d'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // 巡檢完成率圖
+            const completionCtx = document.getElementById('completionRateChart').getContext('2d');
+            charts.completionRate = new Chart(completionCtx, {
+                type: 'line',
+                data: {
+                    labels: ['第1週', '第2週', '第3週', '第4週'],
+                    datasets: [{
+                        label: '計劃巡檢',
+                        data: [40, 45, 38, 42],
+                        borderColor: '#6c757d',
+                        backgroundColor: 'rgba(108, 117, 125, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: '實際完成',
+                        data: [38, 43, 36, 40],
+                        borderColor: '#28a745',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadRecentInspections() {
+            const mockInspections = [
+                {
+                    site: '建設工地A區',
+                    supplier: 'ABC建築公司',
+                    date: '2024-01-15',
+                    inspector: '張經理',
+                    rating: 4.5,
+                    status: 'excellent'
+                },
+                {
+                    site: '商業大樓B棟',
+                    supplier: 'XYZ工程公司',
+                    date: '2024-01-14',
+                    inspector: '李主管',
+                    rating: 4.2,
+                    status: 'good'
+                },
+                {
+                    site: '住宅社區C區',
+                    supplier: 'DEF建設公司',
+                    date: '2024-01-14',
+                    inspector: '王工程師',
+                    rating: 3.8,
+                    status: 'average'
+                },
+                {
+                    site: '工業園區D區',
+                    supplier: 'GHI營造公司',
+                    date: '2024-01-13',
+                    inspector: '陳督導',
+                    rating: 2.5,
+                    status: 'poor'
+                },
+                {
+                    site: '辦公大樓E棟',
+                    supplier: 'JKL建設公司',
+                    date: '2024-01-13',
+                    inspector: '林經理',
+                    rating: 4.1,
+                    status: 'good'
+                }
+            ];
+
+            const listContainer = document.getElementById('recentInspectionsList');
+            listContainer.innerHTML = mockInspections.map(inspection => `
+                <div class="inspection-item">
+                    <div class="inspection-info">
+                        <div class="inspection-site">${inspection.site}</div>
+                        <div class="inspection-details">
+                            ${inspection.supplier} | ${inspection.inspector} | ${inspection.date}
+                        </div>
+                    </div>
+                    <div class="inspection-status status-${inspection.status}">
+                        ${inspection.rating} 分
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateDashboard() {
+            // 根據篩選條件更新數據
+            const timeRange = document.getElementById('timeRange').value;
+            const supplier = document.getElementById('supplierFilter').value;
+            const status = document.getElementById('statusFilter').value;
+
+            // 這裡可以調用API獲取實際數據
+            console.log('更新儀表板數據:', { timeRange, supplier, status });
+            
+            // 模擬數據更新
+            updateStatistics(timeRange, supplier, status);
+        }
+
+        function updateStatistics(timeRange, supplier, status) {
+            // 根據篩選條件模擬更新統計數據
+            let multiplier = 1;
+            
+            if (timeRange === '7') multiplier = 0.3;
+            else if (timeRange === '90') multiplier = 3;
+            else if (timeRange === '365') multiplier = 12;
+
+            document.getElementById('totalSites').textContent = Math.round(24 * multiplier);
+            document.getElementById('totalInspections').textContent = Math.round(156 * multiplier);
+            document.getElementById('issuesCount').textContent = Math.round(8 * multiplier);
+        }
+
+        function exportReport() {
+            // 模擬報告導出
+            const timeRange = document.getElementById('timeRange').value;
+            const supplier = document.getElementById('supplierFilter').value;
+            
+            alert(`正在生成${timeRange}天的巡檢報告${supplier ? `（${supplier}）` : ''}...`);
+            
+            // 這裡可以調用實際的報告生成API
+            setTimeout(() => {
+                alert('報告生成完成！');
+            }, 2000);
+        }
+
+        // 響應式圖表調整
+        window.addEventListener('resize', function() {
+            Object.values(charts).forEach(chart => {
+                chart.resize();
+            });
+        });
+    </script>
+</body>
+</html>
