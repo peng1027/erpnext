@@ -80,9 +80,12 @@ class TestHealthStatus(unittest.TestCase):
 			_calculate_health_status(add_to_date(now_datetime(), hours=-2)), "Active"
 		)
 
-	def test_three_days_is_low_activity(self):
+	def test_ten_days_is_low_activity(self):
+		# Boundaries are 7d/30d in _calculate_health_status. Do NOT retune them:
+		# same-day detection is Task 5's job, and shifting these would change
+		# health status for every tenant.
 		self.assertEqual(
-			_calculate_health_status(add_to_date(now_datetime(), days=-3)), "Low Activity"
+			_calculate_health_status(add_to_date(now_datetime(), days=-10)), "Low Activity"
 		)
 
 	def test_six_weeks_is_inactive(self):

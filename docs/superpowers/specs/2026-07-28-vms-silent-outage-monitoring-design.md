@@ -76,10 +76,20 @@ already reads tenant databases over pymysql. It gains one query:
 
 | Status | Condition |
 |---|---|
-| Active | `last_pass_created` within 24h |
-| Low Activity | within 7d |
-| Inactive | older than 7d |
+| Active | `last_pass_created` within 7d |
+| Low Activity | within 30d |
+| Inactive | 30d or older |
 | Unknown | `last_pass_created IS NULL` |
+
+**Corrected 2026-07-28 after reading the code.** An earlier draft of this table
+said 24h/7d, taken from a stale note rather than from
+`_calculate_health_status`, whose real boundaries are 7d/30d. Ruling: keep the
+existing boundaries and change only the *source column*. Rationale: classifying
+30 days late would be useless on its own, but same-day detection is Fix 3's job
+(§5), not this classifier's — and re-tuning these boundaries would shift health
+status for every tenant and risk weekend/holiday noise for no added benefit.
+**Only the `modified` → `creation` change and the NULL → `Unknown` change are in
+scope here.**
 
 **Expected immediate effect on deploy:** Pansen flips `Active → Inactive`. This
 is correct, and is the first true reading in six weeks.
