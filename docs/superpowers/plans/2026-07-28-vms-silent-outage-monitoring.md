@@ -458,7 +458,7 @@ def _send_alert(subject, body):
 		recipient = _config("outage_alert_email", "developer@tarode.com")
 		frappe.sendmail(recipients=[recipient], subject=subject, message=body)
 	except Exception as e:
-		frappe.log_error(f"outage alert send failed: {str(e)[:200]}", "VMS Outage Monitor")
+		frappe.log_error(title="VMS Outage Monitor", message=f"outage alert send failed: {e}")
 ```
 
 - [ ] **Step 4: Run the tests**
@@ -607,7 +607,7 @@ def check_stall():
 				f"{count} pass(es) created in the last {hours}h on {site}.",
 			)
 	except Exception as e:
-		frappe.log_error(f"check_stall failed: {str(e)[:200]}", "VMS Outage Monitor")
+		frappe.log_error(title="VMS Outage Monitor", message=f"check_stall failed: {e}")
 ```
 
 - [ ] **Step 5: Run the tests**
@@ -732,7 +732,7 @@ def check_error_bursts():
 					f"Most recent:\n{(items[-1].get('error') or '')[:2000]}",
 				)
 	except Exception as e:
-		frappe.log_error(f"check_error_bursts failed: {str(e)[:200]}", "VMS Outage Monitor")
+		frappe.log_error(title="VMS Outage Monitor", message=f"check_error_bursts failed: {e}")
 ```
 
 - [ ] **Step 5: Run the tests**
