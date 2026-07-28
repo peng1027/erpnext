@@ -126,8 +126,40 @@ the rule does not evaluate. This is what prevents the night and Sunday false
 alarms that would otherwise train recipients to ignore the alert — the failure
 mode that kills most monitoring.
 
-> **Open item:** 6h and 08:00–20:00 are assumptions, not confirmed with Pansen.
-> Verify their actual gate hours during the 30 July session and tune if needed.
+### Calibrated against real data — 2026-07-28
+
+The 6h / 08:00–20:00 / Mon–Sat figures in an earlier draft were **assumptions and
+all three were wrong**. Measured against Pansen's 1,451 passes over its active
+window (2026-01-28 → 2026-06-16):
+
+| Setting | Assumed | **Calibrated** | Evidence |
+|---|---|---|---|
+| `outage_business_days` | `"1-6"` | **`"1-7"`** | Sunday had 173 passes over 12 Sundays — a normal working day. Busiest days are Fri/Sat. |
+| `outage_business_hours` | `"08:00-20:00"` | **`"06:00-23:00"`** | 18% of passes fell outside the assumed window (21:00 = 55, 23:00 = 23, 05:00–07:00 = 139). |
+| `outage_stall_hours` | `6` | **`36`** | See gap analysis below. |
+
+**Gap analysis (1,450 consecutive-pass intervals):** mean gap 2.1h. Gaps over
+6h: 88. Over 12h: 51. Over 24h: 7. Over 48h: 5.
+
+The decisive feature is a **cliff**. The five largest gaps are 527h, 351h, 313h,
+190h and 165h — genuine multi-day site closures. The sixth largest is **30h**.
+Normal operation therefore never exceeds ~30 hours without a pass.
+
+`36` sits above the 30h normal ceiling and below the 165h shortest real closure.
+It would have fired 5 times in 4.5 months, each a genuine extended shutdown.
+
+For contrast, `6` would have fired **88 times** — roughly every 1.5 days. That is
+the alert-fatigue path that recreates the original incident in a new form.
+
+**36h is not a same-day rule, and that is honest.** It detects a six-week outage
+in a day and a half instead of the 30 days the old classifier needed — a large
+improvement without false alarms. Genuine same-day detection needs the synthetic
+canary (§2 non-goals); this data is precisely why: real traffic here is too
+sparse and bursty to distinguish "quiet" from "broken" within a single day.
+
+> **Still to confirm with Pansen on site:** whether the near-24h activity profile
+> reflects real gate operation or after-hours data entry, and whether the five
+> long gaps were planned shutdowns. Both affect whether 36h should move.
 
 ### Configuration
 
