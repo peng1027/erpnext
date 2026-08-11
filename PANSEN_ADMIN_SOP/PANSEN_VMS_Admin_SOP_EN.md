@@ -16,7 +16,7 @@ Version 2.3 · 2026-08-11 · Pansen Engineering India Pvt. Ltd.
 | **Owner** | IT / Operations |
 | **Audience** | VMS administrators, site managers, security |
 | **Standards** | ISO/IEC 82079-1 · ISO/IEC 27001 access control |
-| **DPDP Act 2023** | Alignment **in progress** — the consent notice and data-retention controls are not yet live on this site. Do not treat this document as evidence of DPDP compliance. |
+| **DPDP Act 2023** | Alignment **in progress**. The policy is configured on this site (consent required, 90-day retention, notice text written), but the registration form does not yet present the notice, and the nightly retention job has never completed successfully. Do not treat this document as evidence of DPDP compliance. |
 | **Site** | pansen.vmsys.co |
 
 \newpage
