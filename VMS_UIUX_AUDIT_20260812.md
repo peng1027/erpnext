@@ -70,7 +70,9 @@ pages were unaffected — the distribution shows the cause was the old habit of
 suppressing iOS zoom-on-focus for small inputs, a workaround that is now
 unnecessary (iOS does not zoom for inputs ≥16px).
 Fixed in `fix/a11y-viewport-zoom` (`d9524db`), removing only the two offending
-parameters.
+parameters. **Deployed 2026-08-14** as `ab58550`; between the fix and that
+date this section read "Fixed" while production still blocked zoom - the
+commit existed and had never been cherry-picked onto the deployed branch.
 
 **L1-2 · No DPDP notice or consent at the point of collection** · E1 + E2
 `consent` appears **0 times** in `register.html`, and 0 times across all public
@@ -137,6 +139,19 @@ Two of the three are therefore product-level, not page-level: **no page in the
 product supports a second language, and no page obtains consent.**
 
 ---
+
+## 4b. What is actually deployed
+
+Committed is not deployed. This document said "Fixed" for two days about a
+change that was only ever on a branch, so the distinction is recorded here.
+
+| Change | Branch | On production? |
+|---|---|---|
+| Pinch-zoom unblocked | `fix/a11y-viewport-zoom` | **Yes** — `ab58550`, 2026-08-14 |
+| Right-to-Access report | `fix/dpdp-retention-purge` | **Yes** — 2026-08-14 |
+| Aadhaar retention clock + cleanup gate | `fix/dpdp-retention-purge` | **Yes** — 2026-08-14 |
+| DPDP consent at collection | `feat/dpdp-consent` | **No** — needs a schema migration on all three tenants, and turns consent into a hard requirement on Pansen and Bluesen the moment it lands |
+| Site Pass retention purge (`579030f`) | `fix/dpdp-retention-purge` | **No, deliberately** — it would irreversibly anonymise 376 of Pansen's 1453 passes and all 3 of Bluesen's. Held pending written confirmation that those records are not needed for CLRA/BOCW labour compliance |
 
 ## 5. Open — requires E1 evidence
 
